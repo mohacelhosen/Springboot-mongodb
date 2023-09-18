@@ -5,8 +5,10 @@ import lombok.Data;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.util.List;
+
 @Data
-@Document
+@Document(collection = "UserInfo")
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class UserDocument {
     @Id
@@ -20,5 +22,6 @@ public class UserDocument {
     private String age;
     private String bloodGroup;
     private String phone;
-    private Address address;
+    private List<String> hobbies;
+    private List<Address> address;
 }
