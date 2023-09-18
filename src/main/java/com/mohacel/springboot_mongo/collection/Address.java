@@ -5,7 +5,6 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 @Data
 public class Address {
-    private String id;
     private String country;
     private String city;
     private Integer postalCode;

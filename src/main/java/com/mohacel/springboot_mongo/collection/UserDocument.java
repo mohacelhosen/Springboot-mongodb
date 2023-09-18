@@ -5,6 +5,7 @@ import lombok.Data;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Data
@@ -18,10 +19,10 @@ public class UserDocument {
     private String userName;
     private String email;
     private String gender;
-    private String birthDate;
-    private String age;
+    private LocalDate birthDate;
+    private Integer age;
     private String bloodGroup;
     private String phone;
     private List<String> hobbies;
-    private List<Address> address;
+    private Address address;
 }
