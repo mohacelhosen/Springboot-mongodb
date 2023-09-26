@@ -1,12 +1,13 @@
 package com.mohacel.springboot_mongo.service;
 
-import com.mohacel.springboot_mongo.collection.UserDocument;
+import com.mohacel.springboot_mongo.model.UserModel;
 
 import java.util.List;
 
 public interface UserService {
-    UserDocument save(UserDocument userDocument);
-    public UserDocument getUserById(String userId);
-    public List<UserDocument> getUserByName(String userName);
-    public UserDocument getUserByEmail(String userEmail);
+    UserModel save(UserModel userModel);
+    public UserModel getUserById(String userId);
+    public List<UserModel> getUserByName(String userName);
+    public UserModel getUserByEmail(String userEmail);
+    public UserModel getUserByAcademicId(String academicId);
 }

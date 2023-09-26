@@ -1,12 +1,11 @@
 package com.mohacel.springboot_mongo.service;
 
-import com.mohacel.springboot_mongo.collection.UserDocument;
+import com.mohacel.springboot_mongo.model.UserModel;
 import com.mohacel.springboot_mongo.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class UserServiceImpl implements UserService{
@@ -14,24 +13,29 @@ public class UserServiceImpl implements UserService{
     private UserRepository repository;
 
     @Override
-    public UserDocument save(UserDocument userDocument) {
-        userDocument.setId(null);
-        return repository.save(userDocument);
+    public UserModel save(UserModel userModel) {
+        userModel.setId(null);
+        return repository.save(userModel);
     }
 
     @Override
-    public UserDocument getUserById(String userId) {
-        return repository.findById(userId).get();
+    public UserModel getUserById(String userId) {
+        return repository.findById(userId).orElse(null);
     }
 
     @Override
-    public List<UserDocument> getUserByName(String userName) {
-        List<UserDocument> documentList = repository.findByUserName(userName);
-        return documentList;
+    public List<UserModel> getUserByName(String userName) {
+        return repository.findByUserName(userName);
     }
 
     @Override
-    public UserDocument getUserByEmail(String userEmail) {
-        return repository.findByEmail(userEmail).get();
+    public UserModel getUserByEmail(String userEmail) {
+        return repository.findByEmail(userEmail).orElse(null);
+    }
+
+    @Override
+    public UserModel getUserByAcademicId(String academicId){
+        List<UserModel> userModelList = repository.findByAcademicId(academicId);
+        return  userModelList.get(0);
     }
 }
